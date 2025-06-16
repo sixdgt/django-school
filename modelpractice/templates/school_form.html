@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}School Form{% endblock %}
+
+{% block content %}
+    <h1>{{ form.instance.pk|yesno:"Edit School,Create School" }}</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            {{ form.full_name.label_tag }}
+            {{ form.full_name|add_class:"form-control" }}
+        </div>
+        <div class="mb-3">
+            {{ form.school_type.label_tag }}
+            {{ form.school_type|add_class:"form-select" }}
+        </div>
+
+        <button type="submit" class="btn btn-success">Save</button>
+        <a href="{% url 'school.index' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+{% endblock %}

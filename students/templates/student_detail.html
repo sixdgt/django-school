@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% block title %}Student Detail{% endblock %}
+
+{% block content %}
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Student Detail</h1>
+        <div>
+            <a href="{% url 'student.update' student.pk %}" class="btn btn-warning">Edit Student</a>
+            <a href="{% url 'student.index' %}" class="btn btn-secondary">Back to List</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Student Information -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-header">
+                    <h4 class="card-title mb-0">Student Information</h4>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ student.first_name }} {{ student.last_name }}</h5>
+                    <dl class="row mb-0">
+                        <dt class="col-sm-4">Date of Birth</dt>
+                        <dd class="col-sm-8">{{ student.date_of_birth|date:"F d, Y" }}</dd>
+
+                        <dt class="col-sm-4">Gender</dt>
+                        <dd class="col-sm-8">{{ student.get_gender_display }}</dd>
+
+                        <dt class="col-sm-4">Phone</dt>
+                        <dd class="col-sm-8">{{ student.phone }}</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+
+        <!-- Address Information -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-header">
+                    <h4 class="card-title mb-0">Address Information</h4>
+                </div>
+                <div class="card-body">
+                    <dl class="row mb-0">
+                        <dt class="col-sm-4">Address</dt>
+                        <dd class="col-sm-8">{{ student.address }}</dd>
+
+                        <dt class="col-sm-4">City</dt>
+                        <dd class="col-sm-8">{{ student.city }}</dd>
+
+                        <dt class="col-sm-4">State</dt>
+                        <dd class="col-sm-8">{{ student.state }}</dd>
+
+                        <dt class="col-sm-4">Zip Code</dt>
+                        <dd class="col-sm-8">{{ student.zip_code }}</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+
+        <!-- Parent Information -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-header">
+                    <h4 class="card-title mb-0">Parent Information</h4>
+                </div>
+                <div class="card-body">
+                    <dl class="row mb-0">
+                        <dt class="col-sm-4">Parent Name</dt>
+                        <dd class="col-sm-8">{{ student.parent_name }}</dd>
+
+                        <dt class="col-sm-4">Parent Phone</dt>
+                        <dd class="col-sm-8">{{ student.parent_phone }}</dd>
+
+                        <dt class="col-sm-4">Parent Email</dt>
+                        <dd class="col-sm-8">
+                            <a href="mailto:{{ student.parent_email }}">{{ student.parent_email }}</a>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+
+        <!-- School Information -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-header">
+                    <h4 class="card-title mb-0">School Information</h4>
+                </div>
+                <div class="card-body">
+                    <dl class="row mb-0">
+                        <dt class="col-sm-4">School</dt>
+                        <dd class="col-sm-8">
+                            <a href="{% url 'school.detail' student.school.pk %}">{{ student.school.full_name }}</a>
+                        </dd>
+
+                        <dt class="col-sm-4">School Type</dt>
+                        <dd class="col-sm-8">{{ student.school.get_school_type_display }}</dd>
+
+                        <dt class="col-sm-4">School Phone</dt>
+                        <dd class="col-sm-8">{{ student.school.phone }}</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
