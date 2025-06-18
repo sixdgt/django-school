@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from modelpractice.models import Student, School
+from school.models import School
+from students.models import Student
 from django.views.generic import ListView, CreateView, DeleteView, DetailView, UpdateView, TemplateView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin

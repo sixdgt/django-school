@@ -20,8 +20,16 @@ from django.views.generic.base import TemplateView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')),
-    path('school/', include('modelpractice.urls')),
+    path('school/', include('school.urls')),
     path('students/', include('students.urls')),
+    path('classdetail/', include('classdetail.urls')),
+    path('teachers/', include('teachers.urls')),
+    path('subjects/', include('subjects.urls')),
+    path('attendance/', include('attendance.urls')),
+    path('exams/', include('exams.urls')),
+    path('fees/', include('fees.urls')),
+    path('libraries/', include('libraries.urls')),
+    path('results/', include('results.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
 ]

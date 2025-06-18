@@ -40,9 +40,17 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'accounts',
-    'modelpractice',
+    'school',
     'students',
-    'widget_tweaks'
+    'classdetail',
+    'teachers',
+    'subjects',
+    'attendance',    
+    'exams',
+    'fees',
+    'libraries',
+    'results',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -80,8 +88,12 @@ WSGI_APPLICATION = 'django_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'amarsms',
+        'USER': 'root',
+        'PASSWORD': '1234',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
