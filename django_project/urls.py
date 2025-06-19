@@ -29,7 +29,8 @@ urlpatterns = [
     path('exams/', include('exams.urls')),
     path('fees/', include('fees.urls')),
     path('libraries/', include('libraries.urls')),
-    path('results/', include('results.urls')),
+    path('assignments/', include('assignments.urls')),
+    path('materials/', include('materials.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
 ]

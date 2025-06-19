@@ -13,12 +13,13 @@ class Subject(models.Model):
     ]
     subject_name = models.CharField(max_length=100, null=True, blank=True, verbose_name='Subject Name')
     subject_code = models.CharField(max_length=100, null=True, blank=True, verbose_name='Subject Code')
-    subject_description = models.TextField(max_length=100, null=True, blank=True, verbose_name='Subject Description')
+    subject_description = models.CharField(max_length=200, null=True, blank=True, verbose_name='Subject Description')
     class_name = models.ForeignKey('classdetail.ClassDetail', on_delete=models.CASCADE, null=True, blank=True, verbose_name='Class Name')
     subject_teacher = models.ForeignKey('teachers.Teacher', on_delete=models.CASCADE, null=True, blank=True, verbose_name='Subject Teacher')
     subject_type = models.CharField(max_length=100, choices=SUBJECT_TYPE_CHOICES, null=True, blank=True, verbose_name='Subject Type')
-    credit_hours = models.IntegerField(null=True, blank=True, verbose_name='Credit Hours')
+    credit_hours = models.FloatField(null=True, blank=True, verbose_name='Credit Hours')
     subject_status = models.CharField(max_length=100, choices=SUBJECT_STATUS_CHOICES, null=True, blank=True, verbose_name='Subject Status')
+
     def __str__(self):
         return self.subject_name
 

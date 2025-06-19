@@ -49,8 +49,10 @@ INSTALLED_APPS = [
     'exams',
     'fees',
     'libraries',
-    'results',
     'widget_tweaks',
+    'bootstrap5',
+    'assignments',
+    'materials',
 ]
 
 MIDDLEWARE = [
@@ -89,7 +91,7 @@ WSGI_APPLICATION = 'django_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'amarsms',
+        'NAME': 'django_school',
         'USER': 'root',
         'PASSWORD': '1234',
         'HOST': 'localhost',
@@ -133,6 +135,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field

@@ -4,7 +4,12 @@
 {% block title %}Student Form{% endblock %}
 
 {% block content %}
-    <h1>{{ form.instance.pk|yesno:"Edit Student,Add Student" }}</h1>
+<section class="container py-5">
+    <div class="row d-flex justify-content-center align-items-center">
+        <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                <div class="card-body p-5 text-center">
+                    <h1>{{ form.instance.pk|yesno:"Edit Student,Add Student" }}</h1>
 
     {% if form.non_field_errors %}
         <div class="alert alert-danger">
@@ -162,4 +167,9 @@
             <a href="{% url 'student.index' %}" class="btn btn-secondary">Cancel</a>
         </div>
     </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}
