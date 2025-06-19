@@ -43,6 +43,49 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-people-roof me-1"></i>Class Details
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'teacher.index' %}">
+                                <i class="fa-solid fa-list me-2"></i>Class Details
+                            </a></li>
+                            <li><a class="dropdown-item" href="{% url 'teacher.create' %}">
+                                <i class="fa-solid fa-calendar-days me-2"></i>Routine
+                            </a></li>
+                            <li><a class="dropdown-item" href="{% url 'teacher.create' %}">
+                                <i class="fa-solid fa-clipboard-list me-2"></i>Attendance
+                            </a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-book-open me-1"></i>Subjects
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'teacher.index' %}">
+                                <i class="fa-solid fa-list me-2"></i>All Subjects
+                            </a></li>
+                            <li><a class="dropdown-item" href="{% url 'teacher.create' %}">
+                                <i class="fa-solid fa-plus me-2"></i>Add Subject
+                            </a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-file-pen me-1"></i>Exams
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'teacher.index' %}">
+                                <i class="fa-solid fa-list me-2"></i>All Exams
+                            </a></li>
+                            <li><a class="dropdown-item" href="{% url 'teacher.create' %}">
+                                <i class="fa-solid fa-plus me-2"></i>Add Exam
+                            </a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fa-solid fa-chalkboard-teacher me-1"></i>Teachers
                         </a>
                         <ul class="dropdown-menu">
@@ -72,10 +115,10 @@
                             <i class="fa-solid fa-book me-1"></i>Academic
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">
+                            <li><a class="dropdown-item" href="{% url 'assignment.index' %}">
                                 <i class="fa-solid fa-file-alt me-2"></i>Assignments
                             </a></li>
-                            <li><a class="dropdown-item" href="#">
+                            <li><a class="dropdown-item" href="{% url 'material.index' %}">
                                 <i class="fa-solid fa-file-pdf me-2"></i>Materials
                             </a></li>
                         </ul>

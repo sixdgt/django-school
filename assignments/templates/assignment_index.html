@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block title %}Assignments | List{% endblock %}
+{% block content %}
+<section class="container mt-4 mb-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Assignment Management</h1>
+        <a href="{% url 'assignment.create' %}" class="btn btn-primary">Add New Assignment</a>
+    </div>
+    <div class="card">
+        <div class="card-header">All Assignments</div>
+        <div class="card-body p-0">
+            {% if assignments %}
+            <div class="table-responsive">
+                <table class="table table-hover mb-0">
+                    <thead>
+                        <tr>
+                            <th>S.No.</th>
+                            <th>Title</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Teacher</th>
+                            <th>Subject</th>
+                            <th>Class</th>
+                            <th>Full Mark</th>
+                            <th class="text-center">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for assignment in assignments %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ assignment.title }}</td>
+                            <td>{{ assignment.start_date|date:'Y-m-d' }}</td>
+                            <td>{{ assignment.end_date|date:'Y-m-d' }}</td>
+                            <td>{{ assignment.teacher }}</td>
+                            <td>{{ assignment.assignment_subject }}</td>
+                            <td>{{ assignment.class_name }}</td>
+                            <td>{{ assignment.full_mark }}</td>
+                            <td class="text-center">
+                                <a href="{% url 'assignment.detail' assignment.pk %}" class="btn btn-sm btn-outline-primary">View</a>
+                                <a href="{% url 'assignment.update' assignment.pk %}" class="btn btn-sm btn-outline-warning">Edit</a>
+                                <a href="{% url 'assignment.delete' assignment.pk %}" class="btn btn-sm btn-outline-danger">Delete</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <div class="text-center py-5">
+                <h5 class="text-muted">No Assignments Found</h5>
+                <a href="{% url 'assignment.create' %}" class="btn btn-primary">Add First Assignment</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endblock %} 

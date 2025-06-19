@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}Assignment Detail{% endblock %}
+{% block content %}
+<section class="container mt-4 mb-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Assignment Detail</h1>
+        <a href="{% url 'assignment.index' %}" class="btn btn-secondary">Back to List</a>
+    </div>
+    <div class="card">
+        <div class="card-header">Assignment Information</div>
+        <div class="card-body">
+            <dl class="row mb-0">
+                <dt class="col-sm-4">Title</dt>
+                <dd class="col-sm-8">{{ assignment.title }}</dd>
+                <dt class="col-sm-4">Start Date</dt>
+                <dd class="col-sm-8">{{ assignment.start_date|date:'Y-m-d' }}</dd>
+                <dt class="col-sm-4">End Date</dt>
+                <dd class="col-sm-8">{{ assignment.end_date|date:'Y-m-d' }}</dd>
+                <dt class="col-sm-4">Teacher</dt>
+                <dd class="col-sm-8">{{ assignment.teacher }}</dd>
+                <dt class="col-sm-4">Subject</dt>
+                <dd class="col-sm-8">{{ assignment.assignment_subject }}</dd>
+                <dt class="col-sm-4">Class</dt>
+                <dd class="col-sm-8">{{ assignment.class_name }}</dd>
+                <dt class="col-sm-4">Academic Year</dt>
+                <dd class="col-sm-8">{{ assignment.academic_year }}</dd>
+                <dt class="col-sm-4">Full Mark</dt>
+                <dd class="col-sm-8">{{ assignment.full_mark }}</dd>
+                <dt class="col-sm-4">Remark</dt>
+                <dd class="col-sm-8">{{ assignment.remark }}</dd>
+                <dt class="col-sm-4">Question File</dt>
+                <dd class="col-sm-8">
+                    {% if assignment.question_file %}
+                        <a href="{{ assignment.question_file.url }}" target="_blank">Download</a>
+                    {% else %}
+                        No file uploaded
+                    {% endif %}
+                </dd>
+                <dt class="col-sm-4">Question</dt>
+                <dd class="col-sm-8">{{ assignment.question }}</dd>
+            </dl>
+        </div>
+    </div>
+</section>
+{% endblock %} 

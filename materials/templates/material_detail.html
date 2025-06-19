@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}Material Detail{% endblock %}
+{% block content %}
+<section class="container mt-4 mb-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Material Detail</h1>
+        <a href="{% url 'material.index' %}" class="btn btn-secondary">Back to List</a>
+    </div>
+    <div class="card">
+        <div class="card-header">Material Information</div>
+        <div class="card-body">
+            <dl class="row mb-0">
+                <dt class="col-sm-4">Title</dt>
+                <dd class="col-sm-8">{{ material.title }}</dd>
+                <dt class="col-sm-4">Category</dt>
+                <dd class="col-sm-8">{{ material.get_category_display }}</dd>
+                <dt class="col-sm-4">Description</dt>
+                <dd class="col-sm-8">{{ material.description }}</dd>
+                <dt class="col-sm-4">Subject</dt>
+                <dd class="col-sm-8">{{ material.material_subject }}</dd>
+                <dt class="col-sm-4">Class</dt>
+                <dd class="col-sm-8">{{ material.class_name }}</dd>
+                <dt class="col-sm-4">Academic Year</dt>
+                <dd class="col-sm-8">{{ material.academic_year }}</dd>
+                <dt class="col-sm-4">Teacher</dt>
+                <dd class="col-sm-8">{{ material.teacher }}</dd>
+                <dt class="col-sm-4">Upload Date</dt>
+                <dd class="col-sm-8">{{ material.upload_date|date:'Y-m-d H:i' }}</dd>
+                <dt class="col-sm-4">File</dt>
+                <dd class="col-sm-8">
+                    {% if material.material_file %}
+                        <a href="{{ material.material_file.url }}" target="_blank">Download</a>
+                    {% else %}
+                        No file uploaded
+                    {% endif %}
+                </dd>
+            </dl>
+        </div>
+    </div>
+</section>
+{% endblock %} 

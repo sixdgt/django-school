@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block title %}Materials | List{% endblock %}
+{% block content %}
+<section class="container mt-4 mb-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Material Management</h1>
+        <a href="{% url 'material.create' %}" class="btn btn-primary">Add New Material</a>
+    </div>
+    <div class="card">
+        <div class="card-header">All Materials</div>
+        <div class="card-body p-0">
+            {% if materials %}
+            <div class="table-responsive">
+                <table class="table table-hover mb-0">
+                    <thead>
+                        <tr>
+                            <th>S.No.</th>
+                            <th>Title</th>
+                            <th>Category</th>
+                            <th>Subject</th>
+                            <th>Class</th>
+                            <th>Teacher</th>
+                            <th>Upload Date</th>
+                            <th class="text-center">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for material in materials %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ material.title }}</td>
+                            <td>{{ material.get_category_display }}</td>
+                            <td>{{ material.material_subject }}</td>
+                            <td>{{ material.class_name }}</td>
+                            <td>{{ material.teacher }}</td>
+                            <td>{{ material.upload_date|date:'Y-m-d' }}</td>
+                            <td class="text-center">
+                                <a href="{% url 'material.detail' material.pk %}" class="btn btn-sm btn-outline-primary">View</a>
+                                <a href="{% url 'material.update' material.pk %}" class="btn btn-sm btn-outline-warning">Edit</a>
+                                <a href="{% url 'material.delete' material.pk %}" class="btn btn-sm btn-outline-danger">Delete</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <div class="text-center py-5">
+                <h5 class="text-muted">No Materials Found</h5>
+                <a href="{% url 'material.create' %}" class="btn btn-primary">Add First Material</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endblock %} 
