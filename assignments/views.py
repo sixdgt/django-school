@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from .models import Assignment
 from django.urls import reverse_lazy
 
@@ -8,6 +8,12 @@ class AssignmentListView(ListView):
     model = Assignment
     template_name = 'assignment_index.html'
     context_object_name = 'assignments'
+
+class AssignmentDetailView(DetailView):
+    model = Assignment
+    template_name = 'assignment_detail.html'
+    context_object_name = 'assignment'
+    pk_url_kwarg = 'pk'
 
 class AssignmentCreateView(CreateView):
     model = Assignment
