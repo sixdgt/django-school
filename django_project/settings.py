@@ -25,7 +25,9 @@ SECRET_KEY = 'django-insecure-42v2h#+10k1zu%1ws++s#6wz1ijy16#h(ai^w^aa1b73+f7ep9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'django-school-krcs.onrender.com',
+]
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
