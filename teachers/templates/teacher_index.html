@@ -35,7 +35,7 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
-                            <h4 class="fw-bold mb-0">{{ teachers.paginator.count }}</h4>
+                            <h4 class="fw-bold mb-0">{{ teachers.count }}</h4>
                             <small>Total Teachers</small>
                         </div>
                         <i class="fa-solid fa-chalkboard-teacher" style="font-size: 2rem; opacity: 0.7;"></i>
@@ -108,27 +108,27 @@
                     <tbody>
                         {% for teacher in teachers %}
                         <tr>
-                            <td class="px-3">{{ forloop.counter0|add:teachers.start_index }}</td>
+                            <td class="px-3">{{ forloop.counter }}</td>
                             <td>
                                 <div class="d-flex align-items-center">
                                     <div class="bg-primary bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
-                                        <i class="fa-solid fa-user-tie text-primary"></i>
+                                        <i class="fa-solid fa-user-tie text-white"></i>
                                     </div>
                                     <div>
-                                        <strong>{{ teacher.full_name }}</strong>
+                                        <strong>{{ teacher.teacher_name }}</strong>
                                         <br>
                                         <small class="text-muted">ID: #{{ teacher.id }}</small>
                                     </div>
                                 </div>
                             </td>
                             <td>
-                                <a href="mailto:{{ teacher.email }}" class="text-decoration-none">
-                                    {{ teacher.email }}
+                                <a href="mailto:{{ teacher.teacher_email }}" class="text-decoration-none">
+                                    {{ teacher.teacher_email }}
                                 </a>
                             </td>
                             <td>
-                                <a href="tel:{{ teacher.phone_no }}" class="text-decoration-none">
-                                    {{ teacher.phone_no }}
+                                <a href="tel:{{ teacher.teacher_phone }}" class="text-decoration-none">
+                                    {{ teacher.teacher_phone }}
                                 </a>
                             </td>
                             <td class="text-center">
@@ -136,7 +136,7 @@
                                     <a href="{% url 'teacher.detail' teacher.id %}" class="btn btn-sm btn-outline-primary" title="View Details">
                                         <i class="fa-solid fa-eye"></i>
                                     </a>
-                                    <a href="{% url 'teacher.edit' teacher.id %}" class="btn btn-sm btn-outline-warning" title="Edit">
+                                    <a href="{% url 'teacher.update' teacher.id %}" class="btn btn-sm btn-outline-warning" title="Edit">
                                         <i class="fa-solid fa-pen"></i>
                                     </a>
                                     <a href="{% url 'teacher.delete' teacher.id %}" class="btn btn-sm btn-outline-danger" title="Delete">

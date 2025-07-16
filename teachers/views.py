@@ -10,9 +10,6 @@ class TeacherListView(LoginRequiredMixin, ListView):
     template_name = 'teacher_index.html'
     context_object_name = 'teachers'
 
-    def get_queryset(self):
-        return Teacher.objects.filter(teacher_email=self.request.user.email)
-
 class TeacherDetailView(LoginRequiredMixin, DetailView):
     model = Teacher
     template_name = 'teacher_detail.html'

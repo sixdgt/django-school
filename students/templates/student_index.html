@@ -2,7 +2,6 @@
 
 {% block title %}Students | List{% endblock %}
 
-
 {% block content %}
 <!-- Breadcrumb Navigation -->
 <nav aria-label="breadcrumb" class="container mt-4 mb-4">
@@ -100,9 +99,9 @@
                     <thead>
                         <tr>
                             <th class="px-3">S.No.</th>
+                            <th>Registration No</th>
                             <th>Full Name</th>
-                            <th>Email</th>
-                            <th>Semester</th>
+                            <th>Address</th>
                             <th>Contact</th>
                             <th class="text-center">Actions</th>
                         </tr>
@@ -112,28 +111,28 @@
                         <tr>
                             <td class="px-3">{{ forloop.counter }}</td>
                             <td>
+                                <span class="badge bg-info">{{ student.registration_code }}</span>
+                            </td>
+                            <td>
                                 <div class="d-flex align-items-center">
                                     <div class="bg-primary bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
-                                        <i class="fa-solid fa-user text-primary"></i>
+                                        <i class="fa-solid fa-user-tie text-white"></i>
                                     </div>
                                     <div>
-                                        <strong>{{ student.full_name }}</strong>
+                                        <strong>{{ student.first_name }} {{ student.middle_name }} {{ student.last_name }}</strong>
                                         <br>
                                         <small class="text-muted">ID: #{{ student.id }}</small>
                                     </div>
                                 </div>
                             </td>
                             <td>
-                                <a href="mailto:{{ student.email }}" class="text-decoration-none">
-                                    {{ student.email }}
+                                <a href="{{ student.address }}" class="text-decoration-none">
+                                    {{ student.address }}
                                 </a>
                             </td>
                             <td>
-                                <span class="badge bg-info">{{ student.get_semester_display }}</span>
-                            </td>
-                            <td>
                                 <a href="tel:{{ student.phone_no }}" class="text-decoration-none">
-                                    {{ student.phone_no }}
+                                    {{ student.phone }}
                                 </a>
                             </td>
                             <td class="text-center">
@@ -141,7 +140,7 @@
                                     <a href="{% url 'student.detail' student.id %}" class="btn btn-sm btn-outline-primary" title="View Details">
                                         <i class="fa-solid fa-eye"></i>
                                     </a>
-                                    <a href="{% url 'student.edit' student.id %}" class="btn btn-sm btn-outline-warning" title="Edit">
+                                    <a href="{% url 'student.update' student.id %}" class="btn btn-sm btn-outline-warning" title="Edit">
                                         <i class="fa-solid fa-pen"></i>
                                     </a>
                                     <a href="{% url 'student.delete' student.id %}" class="btn btn-sm btn-outline-danger" title="Delete">
