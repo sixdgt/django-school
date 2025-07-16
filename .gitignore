@@ -1,5 +1,5 @@
 # Python virtual environment
-env/
+django-school/env/
 
 # Python compiled bytecode
 __pycache__/
