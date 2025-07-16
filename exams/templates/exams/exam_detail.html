@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Exam: {{ exam }}</h2>
+<p>Date: {{ exam.exam_date }}</p>
+<p>Time: {{ exam.exam_time }}</p>
+<p>Status: {{ exam.exam_status }}</p>
+<p>Academic Year: {{ exam.exam_academic_year }}</p>
+<a href="{% url 'exam.update' exam.id %}">Edit</a> |
+<a href="{% url 'exam.delete' exam.id %}">Delete</a>
+<hr>
+<h3>Subjects for this Exam</h3>
+<a href="{% url 'examsubject.create' exam.id %}">Add Subject</a>
+<ul>
+  {% for subject in exam.examsubject_set.all %}
+    <li>
+      <a href="{% url 'examsubject.detail' subject.id %}">{{ subject }}</a>
+      (<a href="{% url 'examsubject.update' subject.id %}">Edit</a> |
+      <a href="{% url 'examsubject.delete' subject.id %}">Delete</a>)
+    </li>
+  {% empty %}
+    <li>No subjects for this exam.</li>
+  {% endfor %}
+</ul>
+{% endblock %} 

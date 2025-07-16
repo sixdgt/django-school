@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Ledger: {{ examledger }}</h2>
+<p>Student: {{ examledger.student }}</p>
+<p>Obtained Marks: {{ examledger.obtained_marks }}</p>
+<p>Grade: {{ examledger.grade }}</p>
+<p>Grade Point: {{ examledger.grade_point }}</p>
+<p>Weighted Grade: {{ examledger.weighted_grade }}</p>
+<p>Remarks: {{ examledger.remarks }}</p>
+<p>Status: {{ examledger.exam_ledger_status }}</p>
+<a href="{% url 'examledger.update' examledger.id %}">Edit</a> |
+<a href="{% url 'examledger.delete' examledger.id %}">Delete</a>
+<a href="{% url 'examledger_list' examledger.exam.id %}">Back to Ledgers</a>
+{% endblock %} 

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Subjects for Exam: {{ exam }}</h2>
+<a href="{% url 'examsubject.create' exam.id %}">Add Subject</a>
+<ul>
+  {% for subject in subjects %}
+    <li>
+      <a href="{% url 'examsubject.detail' subject.id %}">{{ subject }}</a>
+      (<a href="{% url 'examsubject.update' subject.id %}">Edit</a> |
+      <a href="{% url 'examsubject.delete' subject.id %}">Delete</a>)
+    </li>
+  {% empty %}
+    <li>No subjects for this exam.</li>
+  {% endfor %}
+</ul>
+<a href="{% url 'exam.detail' exam.id %}">Back to Exam</a>
+{% endblock %} 

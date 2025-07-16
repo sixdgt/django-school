@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}Student Attendance Detail{% endblock %}
+
+{% block content %}
+<nav aria-label="breadcrumb" class="container mt-4 mb-4">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fa-solid fa-home me-1"></i>Home</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'attendance.student.index' %}">Student Attendance</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Detail</li>
+    </ol>
+</nav>
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Student Attendance Detail</h1>
+    <div>
+        <a href="{% url 'attendance.student.update' attendance.pk %}" class="btn btn-warning">Edit Attendance</a>
+        <a href="{% url 'attendance.student.index' %}" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6 mb-4">
+        <div class="card h-100">
+            <div class="card-header">
+                <h4 class="card-title mb-0">Attendance Information</h4>
+            </div>
+            <div class="card-body">
+                <dl class="row mb-0">
+                    <dt class="col-sm-4">Student</dt>
+                    <dd class="col-sm-8">{{ attendance.student }}</dd>
+                    <dt class="col-sm-4">Date</dt>
+                    <dd class="col-sm-8">{{ attendance.date }}</dd>
+                    <dt class="col-sm-4">Status</dt>
+                    <dd class="col-sm-8">{{ attendance.get_status_display }}</dd>
+                    <dt class="col-sm-4">Class</dt>
+                    <dd class="col-sm-8">{{ attendance.class_name }}</dd>
+                    <dt class="col-sm-4">Subject</dt>
+                    <dd class="col-sm-8">{{ attendance.subject }}</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

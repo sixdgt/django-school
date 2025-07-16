@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Subject: {{ examsubject }}</h2>
+<p>Full Marks: {{ examsubject.full_marks }}</p>
+<p>Pass Marks: {{ examsubject.pass_marks }}</p>
+<p>Theory Marks: {{ examsubject.theory_marks }}</p>
+<p>Practical Marks: {{ examsubject.practical_marks }}</p>
+<p>Credit Hours: {{ examsubject.credit_hours }}</p>
+<a href="{% url 'examsubject.update' examsubject.id %}">Edit</a> |
+<a href="{% url 'examsubject.delete' examsubject.id %}">Delete</a>
+<hr>
+<h3>Ledgers for this Subject</h3>
+<a href="{% url 'examledger_list' examsubject.id %}">View All Ledgers</a> |
+<a href="{% url 'examledger.create' examsubject.id %}">Add Ledger</a>
+<ul>
+  {% for ledger in examsubject.examledger_set.all %}
+    <li>
+      <a href="{% url 'examledger.detail' ledger.id %}">{{ ledger }}</a>
+      (<a href="{% url 'examledger.update' ledger.id %}">Edit</a> |
+      <a href="{% url 'examledger.delete' ledger.id %}">Delete</a>)
+    </li>
+  {% empty %}
+    <li>No ledgers for this subject.</li>
+  {% endfor %}
+</ul>
+<a href="{% url 'examsubject_list' examsubject.exam.id %}">Back to Subjects</a> |
+<a href="{% url 'exam.detail' examsubject.exam.id %}">Back to Exam</a>
+{% endblock %} 

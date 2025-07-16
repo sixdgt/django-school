@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-42v2h#+10k1zu%1ws++s#6wz1ijy16#h(ai^w^aa1b73+f7ep9
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'django-school-krcs.onrender.com',
+    'localhost',
+    '127.0.0.1',
 ]
 
 LOGIN_REDIRECT_URL = 'home'
@@ -91,18 +92,18 @@ WSGI_APPLICATION = 'django_project.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'django_school',
-    #     'USER': 'root',
-    #     'PASSWORD': '1234',
-    #     'HOST': 'localhost',
-    #     'PORT': '3306',
-    # }
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'django_school',
+        'USER': 'root',
+        'PASSWORD': '1234',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # }
 }
 
 

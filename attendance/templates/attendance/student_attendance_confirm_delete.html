@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block title %}Delete Student Attendance{% endblock %}
+
+{% block content %}
+<nav aria-label="breadcrumb" class="container mt-4 mb-4">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fa-solid fa-home me-1"></i>Home</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'attendance.student.index' %}">Student Attendance</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Delete</li>
+    </ol>
+</nav>
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Delete Student Attendance</h1>
+    <a href="{% url 'attendance.student.detail' object.pk %}" class="btn btn-secondary">Back to Detail</a>
+</div>
+<div class="card border-danger">
+    <div class="card-header bg-danger text-white">
+        <h4 class="card-title mb-0">Warning: Delete Attendance</h4>
+    </div>
+    <div class="card-body">
+        <div class="alert alert-danger">
+            <h5 class="alert-heading">Are you sure you want to delete this attendance record?</h5>
+            <p class="mb-0">This action cannot be undone. The attendance record will be permanently deleted.</p>
+        </div>
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <h5>Attendance Information</h5>
+                <dl class="row mb-0">
+                    <dt class="col-sm-4">Student</dt>
+                    <dd class="col-sm-8">{{ object.student }}</dd>
+                    <dt class="col-sm-4">Date</dt>
+                    <dd class="col-sm-8">{{ object.date }}</dd>
+                    <dt class="col-sm-4">Status</dt>
+                    <dd class="col-sm-8">{{ object.get_status_display }}</dd>
+                </dl>
+            </div>
+            <div class="col-md-6">
+                <h5>Class & Subject</h5>
+                <dl class="row mb-0">
+                    <dt class="col-sm-4">Class</dt>
+                    <dd class="col-sm-8">{{ object.class_name }}</dd>
+                    <dt class="col-sm-4">Subject</dt>
+                    <dd class="col-sm-8">{{ object.subject }}</dd>
+                </dl>
+            </div>
+        </div>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Delete</button>
+            <a href="{% url 'attendance.student.detail' object.pk %}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</div>
+{% endblock %} 

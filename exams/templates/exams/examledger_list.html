@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Ledgers for Subject: {{ examsubject }}</h2>
+<a href="{% url 'examledger.create' examsubject.id %}">Add Ledger</a>
+<ul>
+  {% for ledger in ledgers %}
+    <li>
+      <a href="{% url 'examledger.detail' ledger.id %}">{{ ledger }}</a>
+      (<a href="{% url 'examledger.update' ledger.id %}">Edit</a> |
+      <a href="{% url 'examledger.delete' ledger.id %}">Delete</a>)
+    </li>
+  {% empty %}
+    <li>No ledgers for this subject.</li>
+  {% endfor %}
+</ul>
+<a href="{% url 'examsubject.detail' examsubject.id %}">Back to Subject</a> |
+<a href="{% url 'exam.detail' examsubject.exam.id %}">Back to Exam</a>
+{% endblock %} 

@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}Exam Form{% endblock %}
+
+{% block content %}
+<!-- Breadcrumb Navigation -->
+<nav aria-label="breadcrumb" class="container mt-4 mb-4">
+  <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'home' %}"><i class="fa-solid fa-home me-1"></i>Home</a></li>
+      <li class="breadcrumb-item"><a href="{% url 'exam.index' %}">Exams</a></li>
+      <li class="breadcrumb-item active" aria-current="page">{{ form.instance.pk|yesno:"Edit Exam,Add Exam" }}</li>
+  </ol>
+</nav>
+
+<section class="container py-5">
+  <div class="row d-flex justify-content-center align-items-center">
+    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+      <div class="card shadow-2-strong" style="border-radius: 1rem;">
+        <div class="card-body p-5 text-center">
+          <h1>{{ form.instance.pk|yesno:"Edit Exam,Add Exam" }}</h1>
+        {% if form.non_field_errors %}
+          <div class="alert alert-danger">
+          {% for error in form.non_field_errors %}
+          {{ error }}
+          {% endfor %}
+        </div>
+        {% endif %}
+              <form method="post" novalidate>
+              {% csrf_token %}
+              <div class="row">
+                  <div class="col-md-6">
+                      <h3 class="mb-3">Exam Information</h3>
+                      <div class="mb-3">
+                          {{ form.exam_term.label_tag }}
+                          {{ form.exam_term|add_class:"form-control"|attr:"required" }}
+                          {% if form.exam_term.errors %}
+                              <div class="invalid-feedback d-block">
+                                  {{ form.exam_term.errors }}
+                              </div>
+                          {% endif %}
+                      </div>
+                      <div class="mb-3">
+                          {{ form.exam_date.label_tag }}
+                          {{ form.exam_date|add_class:"form-control"|attr:"required" }}
+                          {% if form.exam_date.errors %}
+                              <div class="invalid-feedback d-block">
+                                  {{ form.exam_date.errors }}
+                              </div>
+                          {% endif %}
+                      </div>
+                      <div class="mb-3">
+                          {{ form.exam_time.label_tag }}
+                          {{ form.exam_time|add_class:"form-control"|attr:"type:date"|attr:"required" }}
+                          {% if form.exam_time.errors %}
+                              <div class="invalid-feedback d-block">
+                                  {{ form.exam_time.errors }}
+                              </div>
+                          {% endif %}
+                      </div>
+                      <div class="mb-3">
+                          {{ form.exam_subject.label_tag }}
+                          {{ form.exam_subject|add_class:"form-select"|attr:"required" }}
+                          {% if form.exam_subject.errors %}
+                              <div class="invalid-feedback d-block">
+                                  {{ form.exam_subject.errors }}
+                              </div>
+                          {% endif %}
+                      </div>
+                      <div class="mb-3">
+                          {{ form.exam_class.label_tag }}
+                          {{ form.exam_class|add_class:"form-control"|attr:"pattern:[0-9]{10}"|attr:"title:Please enter exactly 10 digits"|attr:"required" }}
+                          {% if form.exam_class.errors %}
+                              <div class="invalid-feedback d-block">
+                                  {{ form.exam_class.errors }}
+                              </div>
+                          {% endif %}
+                          <small class="form-text text-muted">Enter exactly 10 digits</small>
+                      </div>
+                  </div>
+
+                  <div class="col-md-6">
+                      <h3 class="mb-3">Address Information</h3>
+                      <div class="mb-3">
+                          {{ form.exam_level.label_tag }}
+                          {{ form.exam_level|add_class:"form-control"|attr:"required" }}
+                          {% if form.exam_level.errors %}
+                              <div class="invalid-feedback d-block">
+                                  {{ form.exam_level.errors }}
+                              </div>
+                          {% endif %}
+                      </div>
+                      <div class="mb-3">
+                          {{ form.exam_academic_year.label_tag }}
+                          {{ form.exam_academic_year|add_class:"form-control"|attr:"required" }}
+                          {% if form.exam_academic_year.errors %}
+                              <div class="invalid-feedback d-block">
+                                  {{ form.exam_academic_year.errors }}
+                              </div>
+                          {% endif %}
+                      </div>
+                      <div class="mb-3">
+                          {{ form.state.label_tag }}
+                          {{ form.state|add_class:"form-control"|attr:"required" }}
+                          {% if form.state.errors %}
+                              <div class="invalid-feedback d-block">
+                                  {{ form.exam_status.errors }}
+                              </div>
+                          {% endif %}
+                      </div>
+                      <div class="mb-3">
+                          {{ form.exam_status.label_tag }}
+                          {{ form.exam_status|add_class:"form-control"|attr:"pattern:[0-9]{5}"|attr:"title:Please enter exactly 5 digits"|attr:"required" }}
+                          {% if form.exam_status.errors %}
+                              <div class="invalid-feedback d-block">
+                                  {{ form.exam_status.errors }}
+                              </div>
+                          {% endif %}
+                          <small class="form-text text-muted">Enter exactly 5 digits</small>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="mt-4">
+                  <button type="submit" class="btn btn-success">Save</button>
+                  <a href="{% url 'exam.index' %}" class="btn btn-secondary">Cancel</a>
+              </div>
+          </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
