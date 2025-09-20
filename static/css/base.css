@@ -257,7 +257,7 @@ p {
 
 /* Utility Classes */
 .text-primary {
-    color: var(--primary-color) !important;
+    color: var(--light-color) !important;
 }
 
 .bg-primary {
